@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block title %}Noty | BlogPost{% endblock title %}
+{% block blogactive %}active{% endblock blogactive %}
+{% block body %}
+<style>
+img 
+{
+    height:400px;
+
+}
+</style>
+<div class="container">
+<img src="{{post.img.url}}">
+<h2>Title:{{post.title}}</h2></br>
+<h6>date:{{post.timestamp}}</h6></br>
+<h3>content:{{post.content}}</h3></br>
+
+</div>
+<div class="container">
+<h2>Comments</h2>
+<form method="post" action="/blog/postComment" class="row g-3">
+{% csrf_token %}
+  <div class="col-auto">
+    
+    <input type="text"  class="form-control-plaintext" name="comment" placeholder="Enter Comment">
+  </div>
+  <input type="hidden" name="postSno" value="{{post.Sno}}">
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" value="Post">Post</button>
+  </div>
+</form>
+
+{% for comment in comments  %}
+
+
+<div class="row my-3">
+<div class="col-md-1"><img src="../static/user.png" class="rounded mx-auto d-block w-100 h-100 p-2"></div>
+<div class="col-md-11"><b>{{comment.user.username}}</b> at {{comment.timestamp}} 
+<div class="my-3">{{comment.comment}}</div>
+</div>
+</div>
+
+{% endfor %}
+
+
+
+
+</div>
+{% endblock body %}

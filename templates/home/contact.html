@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block title %}Noty | Contact{% endblock title %}
+{% block contactactive %} active {% endblock contactactive %}
+{% block body %}
+<style>
+body{
+   background-color:#fd3838;
+	 background-image: linear-gradient(147deg, #ffe53b 0%, #fd3838 74%);
+}
+</style>
+<div class="container my-3">
+<h3><u>Contact NotyProgrammer's</u></h3>
+</br>   
+<form  method="post" action="/contact_us">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter Name">
+    
+  </div>
+  </br>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+  </div>
+  </br>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Describe your issue</label>
+   <textarea class="form-control" id="content" rows="5" cols="30" placeholder="Enter your Message" name="content"></textarea>
+  </div>
+  <div class="form-group form-check">
+    
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock body %}
